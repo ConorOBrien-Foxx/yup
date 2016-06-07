@@ -10,7 +10,7 @@ function parse(code, input, options){
 	input = input || [];
 	options = options || {};
 	// console.log(options);
-	let src = "let input=new Stack([],x=>0);input.push("+input.reverse()+");let stack=new Stack();";
+	let src = "(function(){let input=new Stack([],x=>0);input.push("+input.reverse()+");let stack=new Stack();";
 	
 	src += `let write=d=>${options.debug ? "console.log" : "process.stdout.write"}(${options.debug ? "'OUTPUT: '+" : ""}d);`;
 	
@@ -110,6 +110,9 @@ function parse(code, input, options){
 				case "[":
 					src += "stack.push(stack.shift());"
 					break;
+				case "\\":
+					src += "return stack;";
+					break;
 			}
 			if(options.debug)
 				src += "console.log(' ',stack.toString(),input.toString());console.log();";
@@ -119,7 +122,7 @@ function parse(code, input, options){
 	if(options.debugStackFinal)
 		src += "console.log('\\n\\n','[',[...stack].map(r).join(', '),']');"
 	
-	src += "stack;";
+	src += "return stack;})();";
 	
 	return eval(src);
 }
