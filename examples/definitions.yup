@@ -1,0 +1,38 @@
+` The purpose of this file is to fully explore all possible
+` commands made. These definitions would be "suitable for
+` programming".
+
+` I: operators
+0~-     = _; ` unary negation
+_-      = +; ` binary+ition
+|~|+e   = x; ` bianry multiplication
+|0~-e   = ,; ` unary recipricol
+,x      = /; ` binary division
+|~||+ee = ^; ` binary exponentiation
+0+      = '; ` nop
+
+` II: digits and ten
+0e  = 1;
+11+ = 2;
+12+ = 3;
+13+ = 4;
+14+ = 5;
+15+ = 6;
+16+ = 7;
+17+ = 8;
+18+ = 9;
+19+ = t; ` ten
+1_  = _1; ` negative 1
+
+` III: hybrid operators
+2^ = square;
+3^ = cube;
+2,^ = sqrt;
+` ln(a)/ln(b) = log_b(a)
+|~|~/ = logBASE;
+t0+logBASE = len; ` no floor yet
+
+`` IV: constants
+1e      = E;  ` euler's constant
+_1 sqrt = i;  ` imaginary constant = sqrt(-1)
+_1|i/   = pi; ` 3.1415... = ln(-1) / i

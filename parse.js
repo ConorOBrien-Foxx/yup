@@ -6,15 +6,16 @@ const Stack = require("./stack.js");
 const entries = require("./entries.js");
 
 // compiles yup to js
-function parse(code, input, options){
+function parse(code, input, options, prec){
 	input = input || [];
 	options = options || {};
+	prec = typeof prec === "undefined" ? 14 : prec;
 	// console.log(options);
 	let src = "(function(){let input=new Stack([],x=>0);input.push("+input.reverse()+");let stack=new Stack();";
 	
 	src += `let write=d=>${options.debug ? "console.log" : "process.stdout.write"}(${options.debug ? "'OUTPUT: '+" : ""}d);`;
 	
-	src += `let f=d=>math.floor(d);let r=d=>${options.noRound ? "d" : "math.round(d,31)"};`;
+	src += `let f=d=>math.floor(d);let r=d=>${options.noRound ? "d" : `math.round(d,${prec})`};`;
 	
 	if(!options.disableComments)
 		code = code.replace(/`.*$/gm, "");
@@ -39,13 +40,14 @@ function parse(code, input, options){
 			}
 			
 			let cmdsEntries = entries(cmds);
-			
-			// sort entries by length of key (longest keys first)
-			cmdsEntries.sort((a, b) => b.length - a.length);
+			// sort entries by length of first key (longest keys first)
+			cmdsEntries.sort((a, b) => b[0].length - a[0].length);
+			// console.log(cmdsEntries);
 			let oldLine;
-			do {
+			repl: do {
 				oldLine = lines[i];
-				cmdsEntries.forEach(entry => {
+				for(let j = 0; j < cmdsEntries.length; j++){
+					let entry = cmdsEntries[j];
 					let key = entry[0];
 					let prop = entry[1];
 					// console.log(key, prop);
@@ -53,7 +55,8 @@ function parse(code, input, options){
 						RegExp(escape(key), "g"),
 						prop
 					);
-				});
+					if(oldLine !== lines[i]) continue repl;
+				};
 			} while(oldLine !== lines[i]);
 		}
 		
