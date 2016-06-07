@@ -83,9 +83,6 @@ function parse(code, input, options){
 				case "~":
 					src += "stack.push.apply(stack,stack.pop(2).reverse());"
 					break;
-				case "!":
-					src += "stack.push(math.bignumber(50));";
-					break;
 				case "@":
 					src += "write(String.fromCharCode(f(stack.pop().toString())));";
 					break;
