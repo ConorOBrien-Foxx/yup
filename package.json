@@ -1,0 +1,26 @@
+{
+  "name": "yup",
+  "version": "1.0.0",
+  "description": "esoteric. yup",
+  "main": "yup.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "mathjs": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConorOBrien-Foxx/yup.git"
+  },
+  "author": "Conor O'Brien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConorOBrien-Foxx/yup/issues"
+  },
+  "homepage": "https://github.com/ConorOBrien-Foxx/yup#readme"
+}
