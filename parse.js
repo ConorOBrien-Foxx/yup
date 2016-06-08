@@ -95,7 +95,7 @@ function parse(code, input, options){
 					src += "stack.data=stack.reverse().data;";
 					break;
 				case "{":
-					src += "while(stack.top!=0&&!!stack.top){";
+					src += "while(stack.top>0&&!!stack.top){";
 					break;
 				case "}":
 					src += "}";
