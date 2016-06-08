@@ -32,7 +32,11 @@ _-      = +; ` binary+ition
 |~|~/ = logBASE;
 t0+logBASE = len; ` no floor yet
 
-`` IV: constants
+` IV: constants
 1e      = E;  ` euler's constant
 _1 sqrt = i;  ` imaginary constant = sqrt(-1)
 _1|i/   = pi; ` 3.1415... = ln(-1) / i
+
+` V: other stuff
+#t@ = putnum;  `
+@t@ = putchar; ` output with newline

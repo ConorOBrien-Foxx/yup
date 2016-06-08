@@ -6,16 +6,15 @@ const Stack = require("./stack.js");
 const entries = require("./entries.js");
 
 // compiles yup to js
-function parse(code, input, options, prec){
+function parse(code, input, options){
 	input = input || [];
 	options = options || {};
-	prec = typeof prec === "undefined" ? 14 : prec;
 	// console.log(options);
-	let src = "(function(){let input=new Stack([],x=>0);input.push("+input.reverse()+");let stack=new Stack();";
+	let src = "(function(){math.config({number:'BigNumber',precision:100});let input=new Stack([],x=>0);input.push("+input.reverse()+");let stack=new Stack();";
 	
 	src += `let write=d=>${options.debug ? "console.log" : "process.stdout.write"}(${options.debug ? "'OUTPUT: '+" : ""}d);`;
 	
-	src += `let f=d=>math.floor(d);let r=d=>${options.noRound ? "d" : `math.round(d,${prec})`};`;
+	src += `let f=d=>math.floor(d);let r=d=>${options.noRound ? "d" : `math.round(d,${options.precision})`};`;
 	
 	if(!options.disableComments)
 		code = code.replace(/`.*$/gm, "");

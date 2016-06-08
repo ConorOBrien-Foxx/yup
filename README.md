@@ -18,6 +18,7 @@ Run `node yup.js -?` for info on flags. Or, read this:
       -c         | "disable comments"
       -p         | "print stack"; prints the contents of the
                  | stack in the end
+      -x         | set decimal place to which to round
       -cheat     | ...
       -t         | translate a cheat program to a regular one
       -te        | -t, but eliminates excess characters

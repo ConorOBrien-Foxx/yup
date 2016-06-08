@@ -25,14 +25,14 @@ let options = {
 	whitespaceVariant: false,
 	noRound: false,
 	cheat: false,
-	disableComments: false
+	disableComments: false,
+	precision: 16
 };
 
 for(let i = 0; i < args.length; i++){
 	let flag = flagOf(args[i]);
 	if(flag === "l"){
 		mode = 1;
-		code = args[++i];
 	} else if(flag === "n"){
 		input.push(parseInt(args[++i], 10));
 	} else if(flag === "s"){
@@ -56,10 +56,12 @@ for(let i = 0; i < args.length; i++){
 		doTranslate = true;
 		if(flag === "te")
 			removeExcessTranslate = true;
+	} else if(flag === "x"){
+		options.precision = parseInt(args[++i], 10);
 	} else if(flag === "?"){
 		help();
 		return;
-	} else {
+	} else if(!code){
 		code = args[i];
 	}
 }
@@ -119,6 +121,7 @@ yup.js by Conor O'Brien
   -c         | "disable comments"
   -p         | "print stack"; prints the contents of the
              | stack in the end
+  -x         | set decimal place to which to round
   -cheat     | ...
   -t         | translate a cheat program to a regular one
   -te        | -t, but eliminates excess characters`);
