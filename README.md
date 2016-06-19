@@ -23,4 +23,4 @@ Run `node yup.js -?` for info on flags. Or, read this:
       -t         | translate a cheat program to a regular one
       -te        | -t, but eliminates excess characters
 
-Yup. That's just about it. Read the wiki (currently nothing) for information as how to use the language.
+Yup. That's just about it. Read the wiki for information as how to use the language.
