@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
-    "mathjs": "^3.2.1"
+    "mathjs": "^3.16.5"
   },
   "devDependencies": {},
   "scripts": {

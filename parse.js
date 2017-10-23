@@ -14,7 +14,7 @@ function parse(code, input, options){
 	
 	src += `let write=d=>${options.debug ? "console.log" : "process.stdout.write"}(${options.debug ? "'OUTPUT: '+" : ""}d);`;
 	
-	src += `let f=d=>math.floor(d);let r=d=>${options.noRound ? "d" : `math.round(d,${options.precision})`};`;
+	src += `let f=d=>math.re(math.round(d)).valueOf();let r=d=>${options.noRound ? "d" : `math.round(d,${options.precision})`};`;
 	
 	if(!options.disableComments)
 		code = code.replace(/`.*$/gm, "");
@@ -86,7 +86,7 @@ function parse(code, input, options){
 					src += "stack.push.apply(stack,stack.pop(2).reverse());"
 					break;
 				case "@":
-					src += "write(String.fromCharCode(f(stack.pop().toString())));";
+					src += "write(String.fromCharCode(f(stack.pop())));";
 					break;
 				case "#":
 					src += "write(r(stack.pop()).toString());";
