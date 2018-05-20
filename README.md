@@ -8,7 +8,7 @@ Run `node yup.js -?` for info on flags. Or, read this:
       -l         | "local"; runs following arg as yup code
       -d         | "debug"; display stack at each step
       -s         | "string input"; designates the next item as a
-                 | string, interpreted as series of ASCII cha
+                 | string, interpreted as series of ASCII char
                  | codes
       -n         | "numeric input"; designates the next item as
                  | a number
